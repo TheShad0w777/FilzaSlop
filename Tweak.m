@@ -1593,7 +1593,10 @@ static void scheduleInitialBrowserRepair(NSUInteger attemptsRemaining) {
 static void runMCMPath(void) {
     MCMFilzaStart();
     if (MCMFilzaIsRunningInLiveContainer()) return;
+
     PBWallpaperFeatureStart();
+    AirLiftStatusInstall();
+
     runOptInWriteProbe();
     runOptInPasteCopyProbe();
 }
