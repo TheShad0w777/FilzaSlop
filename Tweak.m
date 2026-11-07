@@ -121,6 +121,7 @@ static void hook_fileSystemViewWillAppear(id self, SEL _cmd, BOOL animated) {
     NSString *visiblePath = [self respondsToSelector:visiblePathSelector]
         ? ((id(*)(id, SEL))objc_msgSend)(self, visiblePathSelector) : redirected;
     PBWallpaperConfigureBrowser(self, visiblePath);
+    AirLiftStatusConfigureBrowser((UIViewController *)self);
 
     // State restoration can leave the browser's table model empty even after
     // its path is correct. Reload on the next main-loop turn, after the view
