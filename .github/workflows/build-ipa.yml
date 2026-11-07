@@ -1,4 +1,3 @@
-
 name: Build FilzaSlop IPA
 
 on:
@@ -37,7 +36,6 @@ jobs:
           THEOS: ${{ runner.temp }}/theos
         run: |
           git clone --recursive https://github.com/theos/theos.git "$THEOS"
-          git clone https://github.com/theos/sdks.git "$THEOS/sdks"
           echo "THEOS=$THEOS" >> "$GITHUB_ENV"
           echo "$THEOS/bin" >> "$GITHUB_PATH"
 
