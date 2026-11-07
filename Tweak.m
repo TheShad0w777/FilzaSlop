@@ -52,11 +52,19 @@ static IMP orig_fileSystemSetCurrentPath = NULL;
 static IMP orig_fileSystemUpdateEditableUI = NULL;
 static void refreshWallpaperButton(id controller, id fallbackPath) {
     if (![controller isKindOfClass:UIViewController.class]) return;
+
     SEL selector = NSSelectorFromString(@"currentPath");
+
     NSString *currentPath = [controller respondsToSelector:selector]
-        ? ((id(*)(id, SEL))objc_msgSend)(controller, selector) : nil;
-    PBWallpaperConfigureBrowser((UIViewController *)controller,
-        currentPath ?: fallbackPath);
+        ? ((id(*)(id, SEL))objc_msgSend)(controller, selector)
+        : nil;
+
+    PBWallpaperConfigureBrowser(
+        (UIViewController *)controller,
+        currentPath ?: fallbackPath
+    );
+
+    AirLiftStatusConfigureBrowser((UIViewController *)controller);
 }
 
 static void hook_fileSystemUpdateEditableUI(id self, SEL _cmd) {
