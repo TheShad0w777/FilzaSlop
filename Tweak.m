@@ -15,6 +15,7 @@
 #include "MCMFilzaIntegration.h"
 #include "PosterBoardFeature.h"
 #include "UpdateChecker.h"
+#include "AirLiftStatus.h"
 
 #pragma mark - Root Helper Hooks
 
